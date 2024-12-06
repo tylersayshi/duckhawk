@@ -1,0 +1,15 @@
+{
+  "name": "duckhawk",
+  "version": "0.0.0",
+  "description": "a duck hawk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/tylersayshi/duckhawk"
+  },
+  "author": "Tyler",
+  "license": "ISC"
+}
