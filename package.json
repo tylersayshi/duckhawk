@@ -1,15 +1,19 @@
 {
-  "name": "duckhawk",
-  "version": "0.0.0",
-  "description": "a duck hawk",
-  "main": "index.js",
+  "name": "duckhawk-turbo",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
-  "repository": {
-    "type": "git",
-    "url": "github.com/tylersayshi/duckhawk"
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^2.3.3",
+    "typescript": "5.5.4"
   },
-  "author": "Tyler",
-  "license": "ISC"
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  }
 }
