@@ -22,3 +22,21 @@ const result = await duckhawk.props({
   three: fetch("https://pokeapi.co/api/v2/pokemon/3").then((res) => res.json()),
 });
 ```
+
+### mapSeries
+
+Bluebird equivalent: http://bluebirdjs.com/docs/api/promise.mapseries.html
+
+This awaits each promise in series and passes the result to the iterator. The result of the iterator is
+returned as an array.
+
+```ts
+import duckhawk from "duckhawk";
+
+const result = await duckhawk.mapSeries(
+  [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
+  (item) => item + 1
+);
+
+console.log(result); // [2, 3, 4]
+```

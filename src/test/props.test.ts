@@ -2,7 +2,7 @@ import { props } from "../props.ts";
 import { expect } from "@std/expect";
 import { delayedReject } from "./utils.ts";
 
-Deno.test("props", async () => {
+Deno.test("props simple", async () => {
   const result = await props({
     a: Promise.resolve(1),
     b: Promise.resolve(2),
