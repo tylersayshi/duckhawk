@@ -1,3 +1,5 @@
 {
-  "workspace": ["./packages/*"]
+  "imports": {
+    "@std/expect": "jsr:@std/expect@^1.0.10"
+  }
 }
