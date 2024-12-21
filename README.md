@@ -2,7 +2,7 @@
 
 Native Promise based implementations of bluebird utilities.
 
-![Duckie the Hawk](/img/falcon.png)
+<img src="https://raw.githubusercontent.com/tylersayshi/duckhawk/main/img/falcon.png" alt="Duckie the hawk" width="200" height="200" />
 
 ## Docs
 
