@@ -1,4 +1,4 @@
-# In Flight
+# In Flight - duckhawk
 
 Native Promise based implementations of bluebird utilities.
 
