@@ -1,4 +1,18 @@
 {
+  "name": "@tyler/duckhawk",
+  "version": "0.0.1",
+  "description": "native Promise based implementations of bluebird utilities",
+  "exports": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylersayshi/duckhawk.git"
+  },
+  "keywords": ["bluebird", "promise", "native", "async", "await"],
+  "author": "Tyler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylersayshi/duckhawk/issues"
+  },
   "imports": {
     "@std/expect": "jsr:@std/expect@^1.0.10"
   }
