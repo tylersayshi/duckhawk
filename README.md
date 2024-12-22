@@ -17,10 +17,7 @@ This helper is unique to duckhawk. We support easily running a large list of pro
 ```ts
 import { allChunked } from "duckhawk";
 
-const result = await allChunked(
-  [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
-  2
-);
+const result = await allChunked([1, 2, 3], 2);
 
 console.log(result); // [1, 2, 3]
 ```
@@ -35,10 +32,7 @@ returned as an array.
 ```ts
 import { map } from "duckhawk";
 
-const result = await map(
-  [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
-  (item) => item + 1
-);
+const result = await map([1, 2, 3], (item) => Promise.resolve(item + 1));
 ```
 
 concurrency can be passed to limit the number of promises to run in parallel.
@@ -46,11 +40,9 @@ concurrency can be passed to limit the number of promises to run in parallel.
 ```ts
 import { map } from "duckhawk";
 
-const result = await map(
-  [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
-  (item) => item + 1,
-  { concurrency: 2 }
-);
+const result = await map([1, 2, 3], (item) => Promise.resolve(item + 1), {
+  concurrency: 2,
+});
 ```
 
 ### mapSeries
@@ -63,10 +55,7 @@ returned as an array.
 ```ts
 import { mapSeries } from "duckhawk";
 
-const result = await mapSeries(
-  [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
-  (item) => item + 1
-);
+const result = await mapSeries([1, 2, 3], (item) => Promise.resolve(item + 1));
 
 console.log(result); // [2, 3, 4]
 ```
@@ -98,8 +87,8 @@ This awaits each promise in series and passes the result to the iterator. The fi
 import { reduce } from "duckhawk";
 
 const result = await reduce(
-  [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
-  (acc, item) => acc + item,
+  [1, 2, 3],
+  (acc, item) => Promise.resolve(acc + item),
   0
 );
 
