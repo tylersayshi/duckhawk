@@ -1,4 +1,5 @@
-import { props } from "./props.ts";
+import { map } from "./map.ts";
 import { mapSeries } from "./map-series.ts";
+import { props } from "./props.ts";
 
-export default { props, mapSeries };
+export default { map, mapSeries, props };
