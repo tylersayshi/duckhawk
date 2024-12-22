@@ -105,3 +105,9 @@ console.log(result); // 6
 ## Notes
 
 We do not plan to achieve 100% parity with bluebird. If you find this library useful and want a feature added, please open an issue :).
+
+## The Why
+
+This is for moving await from bluebird in favor or native Promises and async/await. Some of the bluebird methods are useful and easy to re-implement in native Promises, so we've added the ones we need here.
+
+If you want to replace bluebird with a zero dependency library, this should be a great fit!
