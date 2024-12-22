@@ -4,4 +4,5 @@ import { mapSeries } from "./map-series.ts";
 import { props } from "./props.ts";
 import { reduce } from "./reduce.ts";
 
-export default { allChunked, map, mapSeries, props, reduce };
+const all = { allChunked, map, mapSeries, props, reduce };
+export default all;
