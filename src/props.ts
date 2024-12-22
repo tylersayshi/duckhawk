@@ -1,5 +1,3 @@
-// deno-lint-ignore-file no-explicit-any
-
 /**
  * props implementation with Promise.allSettled. bluebird.props threw on first error
  * and cleaned up the promise chain to avoid leaks. We do not do this.
@@ -22,7 +20,7 @@
  * ```
  */
 export const props = async <
-  T extends Record<string, Promise<any>>,
+  T extends Record<string, unknown>,
   K extends keyof T
 >(props: {
   [P in K]: T[P];
