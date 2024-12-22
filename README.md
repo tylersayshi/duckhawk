@@ -17,7 +17,10 @@ This helper is unique to duckhawk. We support easily running a large list of pro
 ```ts
 import { allChunked } from "duckhawk";
 
-const result = await allChunked([1, 2, 3], 2); // runs 2 promises at a time
+const result = await allChunked(
+  [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
+  2
+);
 
 console.log(result); // [1, 2, 3]
 ```
