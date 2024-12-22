@@ -3,8 +3,8 @@ import { expect } from "@std/expect";
 
 Deno.test("reduce simple", async () => {
   const result = await reduce(
-    [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
-    (acc, item) => acc + item,
+    [1, 2, 3],
+    (acc, item) => Promise.resolve(acc + item),
     0
   );
   expect(result).toEqual(6);
@@ -13,8 +13,13 @@ Deno.test("reduce simple", async () => {
 Deno.test("reduce error", async () => {
   await expect(
     reduce(
-      [Promise.resolve(1), Promise.reject(new Error("fail"))],
-      (acc, item) => acc + item,
+      [1, new Error("fail")],
+      (acc, item) => {
+        if (item instanceof Error) {
+          throw item;
+        }
+        return Promise.resolve(acc + item);
+      },
       0
     )
   ).rejects.toThrow("fail");

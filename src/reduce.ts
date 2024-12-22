@@ -1,10 +1,7 @@
-// deno-lint-ignore-file no-explicit-any
-
-// TODO read docs and add tests
 /**
  * reduce implementation with async/await.
  *
- * @param arr list of promises
+ * @param arr list of items to create a promise for
  * @param iterator reduce callback for each promise result
  * @param initialValue initial value for reduce
  * @returns result of iterator for each promise
@@ -20,13 +17,13 @@
  * console.log(result); // 6
  * ```
  */
-export const reduce = async <PromiseGiven extends Promise<any>, InitialValue>(
-  arr: PromiseGiven[],
+export const reduce = async <Item, InitialValue>(
+  arr: Item[],
   iterator: (
     acc: InitialValue,
-    item: Awaited<PromiseGiven>,
+    item: Item,
     index: number
-  ) => InitialValue,
+  ) => Promise<InitialValue>,
   initialValue: InitialValue
 ): Promise<InitialValue> => {
   let result = initialValue;

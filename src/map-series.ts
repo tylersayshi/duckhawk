@@ -1,10 +1,8 @@
-// deno-lint-ignore-file no-explicit-any
-
 /**
  * run Promises all in series
  *
- * @param arr list of promises
- * @param iterator map callback for each promise result
+ * @param arr list of items
+ * @param iterator map callback for creating a promise for each item
  * @returns result of iterator for each promise
  *
  * @example
@@ -18,12 +16,9 @@
  * console.log(result); // [2, 3, 4]
  * ```
  */
-export const mapSeries = async <
-  PromiseGiven extends Promise<any>,
-  IteratorResult
->(
-  arr: PromiseGiven[],
-  iterator: (item: Awaited<PromiseGiven>, index: number) => IteratorResult
+export const mapSeries = async <Item, IteratorResult>(
+  arr: Item[],
+  iterator: (item: Item, index: number) => Promise<IteratorResult>
 ): Promise<IteratorResult[]> => {
   const results: IteratorResult[] = [];
   for (let i = 0; i < arr.length; i++) {
