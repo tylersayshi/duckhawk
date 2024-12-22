@@ -10,18 +10,6 @@ Instructions on jsr: https://jsr.io/@tyler/duckhawk
 
 ## Docs
 
-### allChunked
-
-This helper is unique to duckhawk. We support easily running a large list of promises `n` at a time. This is useful for avoiding issues like running out of memory in Promise.all, avoiding being throttled with too many requests, and avoiding concurrent writes to the same resource.
-
-```ts
-import { allChunked } from "duckhawk";
-
-const result = await allChunked([1, 2, 3], 2);
-
-console.log(result); // [1, 2, 3]
-```
-
 ### map
 
 Bluebird equivalent: http://bluebirdjs.com/docs/api/promise.map.html
