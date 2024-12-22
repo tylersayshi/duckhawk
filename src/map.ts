@@ -31,7 +31,7 @@ export const map = async <Item, IteratorResult>(
   for (let i = 0; i * chunkSize < arr.length; i++) {
     const promiseResults = await Promise.allSettled(
       arr.slice(i * chunkSize, (i + 1) * chunkSize).map(async (item, ind) => {
-        const result = await iterator(await item, i * chunkSize + ind);
+        const result = await iterator(item, i * chunkSize + ind);
         if (result instanceof Error) {
           throw result;
         }

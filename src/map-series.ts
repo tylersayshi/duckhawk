@@ -22,7 +22,7 @@ export const mapSeries = async <Item, IteratorResult>(
 ): Promise<IteratorResult[]> => {
   const results: IteratorResult[] = [];
   for (let i = 0; i < arr.length; i++) {
-    const result = await iterator(await arr[i], i);
+    const result = await iterator(arr[i], i);
     results.push(result);
   }
   return results;

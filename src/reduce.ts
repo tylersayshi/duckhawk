@@ -28,7 +28,7 @@ export const reduce = async <Item, InitialValue>(
 ): Promise<InitialValue> => {
   let result = initialValue;
   for (let i = 0; i < arr.length; i++) {
-    result = await iterator(result, await arr[i], i);
+    result = await iterator(result, arr[i], i);
   }
   return result;
 };
