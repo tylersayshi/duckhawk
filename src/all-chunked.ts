@@ -26,7 +26,7 @@ export const allChunked = async <const Items extends Promise<unknown>[]>(
   arr: Items,
   concurrency: number
 ): Promise<FinalItems<Items>> => {
-  const results: Awaited<Items[number]>[] = [];
+  const results = [];
 
   const loops = Math.ceil(arr.length / concurrency);
 
@@ -35,7 +35,7 @@ export const allChunked = async <const Items extends Promise<unknown>[]>(
     const end = Math.min(arr.length, (i + 1) * concurrency);
     const chunk = arr.slice(start, end);
     const chunkResults = await Promise.all(chunk);
-    results.push(...(chunkResults as Awaited<Items[number]>[]));
+    results.push(...chunkResults);
   }
 
   return results as FinalItems<Items>;
