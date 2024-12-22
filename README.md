@@ -35,7 +35,7 @@ import { map } from "duckhawk";
 const result = await map([1, 2, 3], (item) => Promise.resolve(item + 1));
 ```
 
-concurrency can be passed to limit the number of promises to run in parallel.
+concurrency can be passed to limit the number of promises to run a specific number at a time. Otherwise, we will run with Promise.all.
 
 ```ts
 import { map } from "duckhawk";
