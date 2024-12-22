@@ -6,21 +6,32 @@ Native Promise based implementations of bluebird utilities with zero dependencie
 
 ## Docs
 
-### props
+### map
 
-Bluebird equivalent: http://bluebirdjs.com/docs/api/promise.props.html
+Bluebird equivalent: http://bluebirdjs.com/docs/api/promise.map.html
 
-We implement props with `Promise.allSettled` to give the same easy api for resolving a list of promises
-as key/value pairs.
+This awaits each promise in parallel and passes the result to the iterator. The result of the iterator is
+returned as an array.
 
 ```ts
 import duckhawk from "duckhawk";
 
-const result = await duckhawk.props({
-  one: fetch("https://pokeapi.co/api/v2/pokemon/1").then((res) => res.json()),
-  two: fetch("https://pokeapi.co/api/v2/pokemon/2").then((res) => res.json()),
-  three: fetch("https://pokeapi.co/api/v2/pokemon/3").then((res) => res.json()),
-});
+const result = await duckhawk.map(
+  [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
+  (item) => item + 1
+);
+```
+
+concurrency can be passed to limit the number of promises to run in parallel.
+
+```ts
+import duckhawk from "duckhawk";
+
+const result = await duckhawk.map(
+  [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
+  (item) => item + 1,
+  { concurrency: 2 }
+);
 ```
 
 ### mapSeries
@@ -39,4 +50,21 @@ const result = await duckhawk.mapSeries(
 );
 
 console.log(result); // [2, 3, 4]
+```
+
+### props
+
+Bluebird equivalent: http://bluebirdjs.com/docs/api/promise.props.html
+
+We implement props with `Promise.allSettled` to give the same easy api for resolving a list of promises
+as key/value pairs.
+
+```ts
+import duckhawk from "duckhawk";
+
+const result = await duckhawk.props({
+  one: fetch("https://pokeapi.co/api/v2/pokemon/1").then((res) => res.json()),
+  two: fetch("https://pokeapi.co/api/v2/pokemon/2").then((res) => res.json()),
+  three: fetch("https://pokeapi.co/api/v2/pokemon/3").then((res) => res.json()),
+});
 ```
