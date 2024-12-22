@@ -15,9 +15,9 @@ Instructions on jsr: https://jsr.io/@tyler/duckhawk
 This helper is unique to duckhawk. We support easily running a large list of promises `n` at a time. This is useful for avoiding issues like running out of memory in Promise.all, avoiding being throttled with too many requests, and avoiding concurrent writes to the same resource.
 
 ```ts
-import duckhawk from "duckhawk";
+import { allChunked } from "duckhawk";
 
-const result = await duckhawk.allChunked(
+const result = await allChunked(
   [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
   2
 );
@@ -33,9 +33,9 @@ This awaits each promise in parallel and passes the result to the iterator. The 
 returned as an array.
 
 ```ts
-import duckhawk from "duckhawk";
+import { map } from "duckhawk";
 
-const result = await duckhawk.map(
+const result = await map(
   [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
   (item) => item + 1
 );
@@ -44,9 +44,9 @@ const result = await duckhawk.map(
 concurrency can be passed to limit the number of promises to run in parallel.
 
 ```ts
-import duckhawk from "duckhawk";
+import { map } from "duckhawk";
 
-const result = await duckhawk.map(
+const result = await map(
   [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
   (item) => item + 1,
   { concurrency: 2 }
@@ -61,9 +61,9 @@ This awaits each promise in series and passes the result to the iterator. The re
 returned as an array.
 
 ```ts
-import duckhawk from "duckhawk";
+import { mapSeries } from "duckhawk";
 
-const result = await duckhawk.mapSeries(
+const result = await mapSeries(
   [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
   (item) => item + 1
 );
@@ -79,9 +79,9 @@ We implement props with `Promise.allSettled` to give the same easy api for resol
 as key/value pairs.
 
 ```ts
-import duckhawk from "duckhawk";
+import { props } from "duckhawk";
 
-const result = await duckhawk.props({
+const result = await props({
   one: fetch("https://pokeapi.co/api/v2/pokemon/1").then((res) => res.json()),
   two: fetch("https://pokeapi.co/api/v2/pokemon/2").then((res) => res.json()),
   three: fetch("https://pokeapi.co/api/v2/pokemon/3").then((res) => res.json()),
@@ -95,9 +95,9 @@ Bluebird equivalent: http://bluebirdjs.com/docs/api/promise.reduce.html
 This awaits each promise in series and passes the result to the iterator. The final accumulator is returned if all promises resolve successfully.
 
 ```ts
-import duckhawk from "duckhawk";
+import { reduce } from "duckhawk";
 
-const result = await duckhawk.reduce(
+const result = await reduce(
   [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
   (acc, item) => acc + item,
   0
