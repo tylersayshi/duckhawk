@@ -1,6 +1,6 @@
 {
   "name": "@tyler/duckhawk",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "native Promise based implementations of bluebird utilities",
   "exports": "./src/index.ts",
   "repository": {
