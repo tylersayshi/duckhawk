@@ -3,6 +3,8 @@ type FinalItems<
   Result extends unknown[] = []
 > = T extends [infer Head, ...infer Tail extends Promise<unknown>[]]
   ? FinalItems<Tail, [...Result, Awaited<Head>]>
+  : Result extends []
+  ? Awaited<T[number]>[]
   : Result;
 
 /**
